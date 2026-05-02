@@ -1,20 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<!doctype html>
+<html>
+  <head>
+    <title>Minha Primeira Página</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
-    <style src="styles.css"></style>
-</head>
-<body>
-    <header></header>
+  </head>
+  <body>
+    <header>
+      <div class="logo">Daniel</div>
+     
+      <h1 class="titulo">Mini Ecommerce</h1>
+      
+      <div class="header-busca">
+        <input type="text" class="header-input" placeholder="Buscar...">
+        <button class="header-btn">Buscar</button>
+      </div>
+    </header>
+    <section>
+        <nav>
+            <ul class="menu-lateral">
+                <li>
+                    <a href="#">
+                        <div class="opcao">
+                            <div class="icone-inicial">
+                            </div>
+                            <div class="rotulo">categorias</div>
+                            <div class="icone-final"></div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="opcao">
+                            <div class="icone-inicial"></div>
+                        
+                            <div class="rotulo">ofertas</div>
+                            <div class="icone-final"></div>
+                            
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="opcao">
+                            <div class="icone-inicial">
+                             
+                            <div class="rotulo">mensagem</div>
+                            <div class="icone-final"></div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="opcao">
+                            <div class="icone-inicial">
+                            </div>
+                            <div class="rotulo">Sair</div>
+                            <div class="icone-final"></div>
+                            
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-    <main>
-        
-    </main>
+        <div style="flex: 1; display: flex; flex-direction: column;">
+          
+          <div style="background: #fff; padding: 20px; display: flex; gap: 15px; align-items: center; border-bottom: 1px solid #ddd;">
+            <div style="flex: 1;">
+              <label for="category" style="font-weight: bold; color: #333; display: block; margin-bottom: 5px;">Filtrar por categoria:</label>
+              <select id="category" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 0.9rem;">
+                <option value="Todas">Todas</option>
+              </select>
+            </div>
+            <button id="btnRender" style="padding: 8px 16px; background: #2ea064; color: #fff; border: none; border-radius: 4px; cursor: pointer; align-self: flex-end;">Renderizar</button>
+          </div>
 
-    <footer></footer>
-    
-</body>
+          <main id="product-list" class="container"></main>
+
+          <div id="product-details" style="padding: 20px; background: #f9f9f9;"></div>
+
+        </div>
+    </section>
+
+    <footer>&copy; Meu Site de E-commerce </footer>
+  </body>
 </html>
