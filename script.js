@@ -1,9 +1,4 @@
-// ═══════════════════════════════════════════════════════════════════════════════
-// MINI ECOMMERCE - CATÁLOGO EM CARDS
-// Atividade Prática: Funções e Manipulação do DOM
-// ═══════════════════════════════════════════════════════════════════════════════
 
-// ─── 1. BASE DE DADOS (JSON) ─────────────────────────────────────────────────
 const data = {
   produtos: [
     { 
@@ -80,34 +75,21 @@ const data = {
     }
   ]
 };
-
-// ─── 2. SELEÇÃO DE ELEMENTOS DO DOM (getElementById, querySelector) ────────────
 const productList = document.getElementById("product-list");
 const productDetails = document.getElementById("product-details");
-const searchInput = document.querySelector(".header-input");
-const categorySelect = document.querySelector("#category");
-const btnRender = document.querySelector(".header-btn");
+const searchInput = document.getElementById("search");
+const categorySelect = document.getElementById("category");
+const btnRender = document.getElementById("btnRender");
 
 console.log("✓ Elementos selecionados com getElementById e querySelector");
 
-// ─── 3. FUNÇÕES OBRIGATÓRIAS ────────────────────────────────────────────────
-
-/**
- * Formata o preço com símbolo R$ e duas casas decimais
- * @param {number} preco - Preço em número
- * @returns {string} Preço formatado ex: R$ 189,90
- */
+ 
 function formatPrice(preco) {
   return "R$ " + preco.toFixed(2).replace(".", ",");
 }
-
-/**
- * Cria um card (div) para um produto usando createElement
- * @param {object} produto - Objeto com dados do produto
- * @returns {HTMLElement} Elemento div contendo o card do produto
- */
+ 
+ 
 function createProductCard(produto) {
-  // Criar container principal do card
   const card = document.createElement("div");
   card.setAttribute("data-id", produto.id);
   card.classList.add("card");
@@ -117,7 +99,6 @@ function createProductCard(produto) {
   card.style.backgroundColor = "#fff";
   card.style.transition = "all 0.3s ease";
 
-  // Criar imagem
   const img = document.createElement("img");
   img.setAttribute("src", produto.imagem);
   img.setAttribute("alt", produto.nome);
@@ -127,7 +108,6 @@ function createProductCard(produto) {
   img.style.borderRadius = "6px";
   img.style.marginBottom = "10px";
 
-  // Criar título
   const titulo = document.createElement("h3");
   titulo.textContent = produto.nome;
   titulo.style.fontSize = "0.95rem";
@@ -135,14 +115,12 @@ function createProductCard(produto) {
   titulo.style.marginBottom = "8px";
   titulo.style.color = "#333";
 
-  // Criar categoria
   const categoria = document.createElement("p");
   categoria.textContent = "Categoria: " + produto.categoria;
   categoria.style.fontSize = "0.8rem";
   categoria.style.color = "#2ea064";
   categoria.style.marginBottom = "6px";
 
-  // Criar preço
   const preco = document.createElement("p");
   preco.textContent = formatPrice(produto.preco);
   preco.style.fontSize = "1.1rem";
@@ -150,20 +128,17 @@ function createProductCard(produto) {
   preco.style.color = "#2ea064";
   preco.style.marginBottom = "8px";
 
-  // Criar status de estoque
   const estoque = document.createElement("p");
   estoque.textContent = produto.emEstoque ? "✓ Em estoque" : "✗ Esgotado";
   estoque.style.fontSize = "0.8rem";
   estoque.style.color = produto.emEstoque ? "#2ea064" : "#e05050";
   estoque.style.marginBottom = "12px";
 
-  // Criar container de botões
   const botoesDiv = document.createElement("div");
   botoesDiv.style.display = "flex";
   botoesDiv.style.gap = "8px";
   botoesDiv.style.marginTop = "12px";
 
-  // Botão "Ver detalhes"
   const btnDetalhes = document.createElement("button");
   btnDetalhes.textContent = "Ver detalhes";
   btnDetalhes.setAttribute("class", "btn-detalhes");
@@ -185,7 +160,7 @@ function createProductCard(produto) {
     this.style.backgroundColor = "#222";
   });
 
-  // Botão "Destacar"
+
   const btnDestacar = document.createElement("button");
   btnDestacar.textContent = "Destacar";
   btnDestacar.setAttribute("class", "btn-destacar");
@@ -218,7 +193,6 @@ function createProductCard(produto) {
     }
   });
 
-  // Montar estrutura do card usando appendChild
   botoesDiv.appendChild(btnDetalhes);
   botoesDiv.appendChild(btnDestacar);
 
@@ -232,12 +206,9 @@ function createProductCard(produto) {
   return card;
 }
 
-/**
- * Renderiza os produtos na página
- * @param {array} produtos - Array de produtos para renderizar
- */
+
 function renderProducts(produtos) {
-  // Limpar lista anterior usando innerHTML
+ 
   productList.innerHTML = "";
 
   if (produtos.length === 0) {
@@ -245,14 +216,12 @@ function renderProducts(produtos) {
     return;
   }
 
-  // Adicionar cada card usando appendChild
+
   produtos.forEach(function (produto) {
     const card = createProductCard(produto);
     productList.appendChild(card);
   });
 
-  // ─── QUERYSELECTORALL OBRIGATÓRIO ───────────────────────────────────────
-  // Selecionar todos os cards renderizados e listar seus IDs no console
   const todosOsCards = document.querySelectorAll(".card");
   console.log(`✓ ${todosOsCards.length} cards renderizados:`);
   todosOsCards.forEach(function (card) {
@@ -261,11 +230,7 @@ function renderProducts(produtos) {
   });
 }
 
-/**
- * Renderiza as categorias dinamicamente no select
- */
 function renderCategories() {
-  // Extrair categorias únicas
   const categorias = [];
   data.produtos.forEach(function (produto) {
     if (!categorias.includes(produto.categoria)) {
@@ -273,10 +238,9 @@ function renderCategories() {
     }
   });
 
-  // Limpar select e adicionar opção "Todas"
+
   categorySelect.innerHTML = '<option value="Todas">Todas</option>';
 
-  // Adicionar opções de categorias usando createElement
   categorias.forEach(function (categoria) {
     const option = document.createElement("option");
     option.setAttribute("value", categoria);
@@ -287,16 +251,11 @@ function renderCategories() {
   console.log("✓ Categorias carregadas: " + categorias.join(", "));
 }
 
-/**
- * Mostra os detalhes de um produto
- * @param {object} produto - Objeto do produto
- */
 function showProductDetails(produto) {
   const statusEstoque = produto.emEstoque 
     ? '<span style="color: #2ea064;">✓ Em estoque</span>' 
     : '<span style="color: #e05050;">✗ Fora de estoque</span>';
 
-  // Usar innerHTML para preencher detalhes
   productDetails.innerHTML = `
     <div style="background: #fff; padding: 20px; border-radius: 8px; border: 2px solid #2ea064; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <h2 style="color: #222; margin-bottom: 15px; font-size: 1.5rem;">${produto.nome}</h2>
@@ -316,14 +275,14 @@ function showProductDetails(produto) {
     </div>
   `;
 
-  // Scroll suave até os detalhes
+
   productDetails.scrollIntoView({ behavior: "smooth" });
 }
 
-/**
- * Filtra produtos por busca (nome) e categoria
- * @returns {array} Array de produtos filtrados
- */
+
+
+
+ 
 function filterProducts() {
   const textoBusca = searchInput.value.toLowerCase().trim();
   const categoriaSelecionada = categorySelect.value;
@@ -335,9 +294,6 @@ function filterProducts() {
   });
 }
 
-// ─── 4. EVENTOS (ADDEVENTLISTENER) ──────────────────────────────────────────
-
-// Evento: Digitação no campo de busca (input)
 if (searchInput) {
   searchInput.addEventListener("input", function () {
     const produtosFiltrados = filterProducts();
@@ -345,7 +301,6 @@ if (searchInput) {
   });
 }
 
-// Evento: Mudança de categoria (change)
 if (categorySelect) {
   categorySelect.addEventListener("change", function () {
     const produtosFiltrados = filterProducts();
@@ -353,7 +308,6 @@ if (categorySelect) {
   });
 }
 
-// Evento: Clique no botão Renderizar
 if (btnRender) {
   btnRender.addEventListener("click", function () {
     const produtosFiltrados = filterProducts();
@@ -361,8 +315,6 @@ if (btnRender) {
     console.log("✓ Catálogo renderizado via botão de busca");
   });
 }
-
-// ─── 5. INICIALIZAÇÃO ───────────────────────────────────────────────────────
 
 console.log("═══════════════════════════════════════════════════════════");
 console.log("MINI ECOMMERCE - CATÁLOGO EM CARDS");

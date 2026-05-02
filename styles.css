@@ -199,6 +199,72 @@ main.container {
   background: #2ea064;
 }
 
+/* ─── Estilos para Controles e Filtros ─── */
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-bar {
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.filter-group {
+  flex: 1;
+}
+
+.filter-label {
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.category-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+.category-select:focus {
+  outline: none;
+  border-color: #2ea064;
+  box-shadow: 0 0 4px rgba(46, 160, 100, 0.3);
+}
+
+.btn-render {
+  padding: 8px 16px;
+  background: #2ea064;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+  align-self: flex-end;
+}
+
+.btn-render:hover {
+  background: #248a52;
+}
+
+.product-details {
+  padding: 20px;
+  background: #f9f9f9;
+}
+
 footer {
   background: #222;
   color: #aaa;
@@ -213,3 +279,18 @@ footer {
   header .titulo { display: none; }
 }
  
+.label-category{
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+
+}
+
+.category{
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
