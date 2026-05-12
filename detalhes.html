@@ -68,20 +68,9 @@ search
         </nav>
 
         <div class="main-content">
+          <a href="./index.html" class="btn-voltar">← Voltar</a>
           
-          <div class="filter-bar">
-            <div class="filter-group">
-              <label id="label-category" class="filter-label">Filtrar por categoria:</label>
-              <select id="category" class="category-select">
-                <option value="Todas">Todas</option>
-              </select>
-            </div>
-            <button id="btnRender" class="btn-render">Renderizar</button>
-          </div>
-
-          <main id="product-list" class="container"></main>
-
-          <div id="product-details" class="product-details"></div>
+          <div id="product-details-container" class="product-details-container"></div>
 
         </div>
     </section>
@@ -90,7 +79,7 @@ search
     
     <script src="./js/database.js"></script>
     <script src="./js/utils.js"></script>
-    <script src="./js/catalog.js"></script>
+    <script src="./js/productDetails.js"></script>
     <script src="./js/app.js"></script>
   </body>
 </html>

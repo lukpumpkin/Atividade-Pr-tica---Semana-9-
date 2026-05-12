@@ -2,6 +2,6 @@
 nome: Daniel Luk Kardei Martins
 matricula: 1664490
 
-![parte da renderização](./images/render.png)
-![ver detalhes](./images/verDetalhes.png)
-![f12 console](./images/telaF12.png)
+![home page](./images/home.png)
+![ver detalhes](./images/detalhes.png)
+![codigo json](./images/json.png)
